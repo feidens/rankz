@@ -1,0 +1,12 @@
+{
+  "name": "accounts-entry-semantic-ui",
+  "description": "A meteorite package that relies on Iron Router and gives you whole-page login styles.",
+  "homepage": "https://github.com/Differential/accounts-entry",
+  "author": "Differential (http://differential.io)",
+  "version": "0.7.3",
+  "git": "https://github.com/Differential/accounts-entry.git",
+  "packages": {
+    "iron-router": "0.7.0",
+    "accounts-t9n": "0.0.5"
+  }
+}

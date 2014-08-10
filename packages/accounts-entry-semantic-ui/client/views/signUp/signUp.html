@@ -1,0 +1,114 @@
+<template name='entrySignUp'>
+  <div class="three column doubling ui grid">
+    <div class="column"></div>
+    <div class="column">
+      {{#if logo}}
+        <div class="entry-logo">
+            <a href="/"><img src="{{logo}}" alt="logo"></a>
+        </div>
+      {{/if}}
+
+      <div class="one column ui grid">
+        <div class="column">
+        <h3>{{t9n "createAccount"}}</h3>
+        {{#if otherLoginServices}}
+          <p class="entry-signin-cta">{{t9n "ifYouAlreadyHaveAnAccount"}} <a href="/sign-in">{{t9n "signIn"}}</a>.</p>
+          <div class="entry-social">
+            {{#each loginServices}}
+              {{> entrySocial}}
+            {{/each}}
+            {{#if passwordLoginService}}
+              <div class="email-option">
+                <strong class="line-thru">OR</strong>
+                <a data-toggle="collapse" href="#signUp">
+                  {{t9n "signUpWithYourEmailAddress"}}
+                </a>
+              </div>
+            {{/if}}
+          </div>
+        {{else}}
+            <p class="entry-signin-cta">{{t9n "ifYouAlreadyHaveAnAccount"}} <a href="/sign-in">{{t9n "signIn"}}</a>.</p>
+        {{/if}}
+      </div>
+      </div>
+        {{> entryError}}
+
+
+
+        {{#if passwordLoginService}}
+          <form class="ui form segment {{signupClass}}" id="signUp">
+
+            {{#if showUsername}}
+              <div class="field">
+                <label>{{t9n "username"}}</label>
+                <div class="ui left labeled icon input">
+                  <input autofocus name="username" type="string" value='' placeholder="">
+                  <i class="user icon"></i>
+                  <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                  </div>
+                </div>
+              </div>
+            {{/if}}
+
+            {{#if showEmail}}
+              <div class="field">
+                <label>{{t9n "emailAddress"}}</label>
+                <div class="ui left labeled icon input">
+                {{#if showUsername}}
+                  <input type="email" value='{{emailAddress}}'>
+                {{else}}
+                  <input autofocus type="email" value='{{emailAddress}}'>
+                {{/if}}
+                <i class="mail icon"></i>
+                <div class="ui corner label">
+                  <i class="icon asterisk"></i>
+                </div>
+                </div>
+              </div>
+            {{/if}}
+
+
+            <div class="field">
+              <label>{{t9n "password"}}</label>
+              <div class="ui left labeled icon input">
+                <input name="password" type="password" value='{{password}}' placeholder="{{t9n 'password'}}">
+                <i class="lock icon"></i>
+                <div class="ui corner label">
+                  <i class="icon asterisk"></i>
+                </div>
+              </div>
+            </div>
+
+            {{#if showSignupCode}}
+              <div class="field">
+                <label>{{t9n "signupCode"}}</label>
+                <input name="signupCode" type="string" value=''>
+              </div>
+            {{/if}}
+
+            <div class="ui error message">
+              <div class="header">We noticed some issues</div>
+            </div>
+
+            <button type="submit" class="fluid ui secondary submit button">{{t9n "signUp"}}</button>
+          </form>
+        {{/if}}
+
+        {{#if both}}
+          <p class="entry-agreement">{{t9n "clickAgree"}}
+            <a href="{{privacyUrl}}">{{t9n "privacyPolicy"}}</a> {{t9n "and"}}
+            <a href="{{termsUrl}}">{{t9n "terms"}}</a>.
+          </p>
+        {{else}}
+          {{#unless neither}}
+            <p class="entry-agreement">{{t9n "clickAgree"}}
+              {{#if privacyUrl}}<a href="{{privacyUrl}}">{{t9n "privacyPolicy"}}</a>.{{/if}}
+              {{#if termsUrl}}<a href="{{termsUrl}}">{{t9n "terms"}}</a>.{{/if}}
+            </p>
+          {{/unless}}
+        {{/if}}
+      </div>
+      <div class="column"></div>
+  </div>
+</template>

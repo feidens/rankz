@@ -1,0 +1,67 @@
+<template name="profile">
+    <p>Template profile</p>
+
+    <p>
+      <a href="/sign-out"><div class="ui orange button">{{i18n 'profile.signout'}}</div></a>
+    </p>
+    <form class="ui form">
+      <div class="ui field">
+
+        <div class="field">
+          <label>Name</label>
+          <input id="Name" name="name" type="text" placeholder="Name" class="name" value={{this.profile.name}}>
+        </div>
+
+
+
+<!--
+        <div class="field">
+          <label>{{i18n 'profile.gender'}}</label>
+          <div class="ui fluid selection dropdown">
+            <input type="hidden" name="gender">
+            <div class="{{isDefaultGender}} text">{{genderText}}</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item {{isActive 'woman' this.profile.gender}}" data-value="woman">{{i18n 'profile.woman'}}</div>
+              <div class="item {{isActive 'man' this.profile.gender}}" data-value="man">{{i18n 'profile.man'}}</div>
+            </div>
+          </div>
+        </div> -->
+
+
+        <div class="field">
+          <label>{{i18n 'profile.language'}}</label>
+          <div class="ui fluid selection dropdown">
+            <input type="hidden" name="language">
+            <div class="{{isDefaultLanguage}} text">{{languageText}}</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item {{isActive 'de-de' this.profile.language}}" data-value="de-de">Deutsch</div>
+              <div class="item {{isActive 'en-us' this.profile.language}}" data-value="en-us">English</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <input type="submit" value="Submit" class="ui vertical animated green large submit hidden button transition"/>
+
+
+    </form>
+
+    {{> addGroup}}
+
+    {{> groupJoin}}
+    <h3 class="ui orange header">
+      {{i18n 'group.yourGroupTitle'}}
+    </h3>
+    <div class="ui list">
+
+      <div class="item">
+        <div class="list">
+          {{#each this.playerGroups}}
+            {{> showGroups}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+</template>

@@ -1,0 +1,85 @@
+<template name="home">
+
+    <div class="ui huge header">rankz</div>
+
+    <div class="ui four column doubling main-content features grid">
+        {{#each feature}}
+            <div class="center aligned column">
+                <a href="{{path}}" class="ui unstyled no-hover-styles no-underline link icon header">
+                    <span class="headline">{{text}}</span>
+                    <i class="{{color}} {{icon}} boilerplate-feature icon"></i>
+                </a>
+            </div>
+        {{/each}}
+    </div>
+
+    <div id="packages" class="main-content padding-wrapper">
+        <div class="ui fitted horizontal icon divider"><i class="magic icon"></i></div>
+        <div class="ui two column stackable grid">
+            <div class="middle aligned row">
+                <div class="center aligned column">
+                    <div class="center aligned icon-wrapper">
+                        <i class="circular massive red archive icon"></i>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 class="large ui header">Key Features<div class="sub header">Don't search, find your clothes!</div></h3>
+                    <p>There are the a lot of helpful packages in this boilerplate to get you started asap.</p>
+                    <div class="ui list">
+                        {{#each package}}
+                            <a href="{{path}}" class="item no-underline link">
+                                <i class="archive icon"></i>
+                                {{name}}
+                            </a>
+                        {{/each}}
+                    </div>
+                    <div class="ui info message">
+                        <div class="header">
+                            Removed Packages
+                        </div>
+                        "insecure" and "autopublish" are removed by default!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="console-tool" class="main-content padding-wrapper">
+        <div class="ui fitted horizontal icon divider"><i class="magic icon"></i></div>
+        <div class="ui two column stackable grid">
+            <div class="middle aligned row">
+                <div class="column">
+                    <h3 class="large ui header">The console tool <div class="sub header">Be even faster</div></h3>
+                    <p>
+                        To speed up a lot of simple repetitive tasks, there's a console tool in this boilerplate.<br />
+                        Simply use <code>./meteor-boilerplate {command}</code> in the project root
+                        (<code>./meteor-boilerplate.bat</code> for coders on Windows).
+                    </p>
+                    <div class="ui list">
+                        {{#each consoleCommand}}
+                        <div class="item">
+                            <i class="right triangle icon"></i>
+                            <div class="content">
+                                <div class="header">{{command}}</div>
+                                <div class="description">{{description}}</div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <p>
+                        <a href="mailto:mat.demicheli@gmail.com">Write me</a> if you have any ideas for additional commands.
+                    </p>
+                </div>
+                <div class="center aligned column">
+                    <div class="center aligned icon-wrapper">
+                        <i class="circular massive code icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</template>

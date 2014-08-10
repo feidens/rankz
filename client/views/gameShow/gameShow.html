@@ -1,0 +1,22 @@
+<template name="gameShow">
+    <p>Template gameShow</p>
+    {{print}}
+
+    {{#if this.gamePoints}}
+
+    {{else}}
+      <form class="ui form">
+        {{#each this.game.playerNames}}
+          <div class="field">
+            <label>{{ this }}</label>
+            <input id="{{ this }}" name="{{ this }}" type="number" placeholder="{{i18n 'game.points'}}">
+          </div>
+        {{/each}}
+        <input type="submit" value="Submit" class="ui vertical animated green large submit button"/>
+
+      </form>
+    {{/if}}
+
+
+
+</template>

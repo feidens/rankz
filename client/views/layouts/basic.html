@@ -1,0 +1,14 @@
+<template name="basicLayout">
+    <header>
+        {{> header}}
+    </header>
+    <!-- <div id="main"> -->
+    <div class="ui one column page grid">
+      <div class="column">
+        {{> yield}}
+      </div>
+    </div>
+    <footer>
+        {{> footer}}
+    </footer>
+</template>

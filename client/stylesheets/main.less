@@ -1,0 +1,77 @@
+// General styles, e. g. for the body tag
+@import 'variables';
+@import 'elements';
+
+/* -------------------
+    Main Content
+   ------------------- */
+
+body, #main {
+    padding-top: 3.5em;
+    // overflow-x: hidden;
+    // font-family: 'Fauna One', serif;
+    font-family: 'Muli', sans-serif;
+}
+
+.orange.header {
+    color: #ff5500;
+}
+
+
+#main {
+    margin: 0px 10px 10px 10px;
+}
+
+a {
+    color: inherit;
+    transition: 0.3s color;
+
+    &:hover {
+        color: @primaryLinkHoverColor;
+    }
+}
+
+.icon {
+    &.orange {
+        color: @html5Orange;
+    }
+}
+
+.ui.header {
+    /* font-family: 'Glegoo', serif; */
+}
+
+/* -------------------
+    Footer
+   ------------------- */
+.padding-wrapper.footer {
+    border-radius: 0px;
+
+
+    a:hover {
+        color: @secondaryLinkHoverColor;
+    }
+}
+
+.spinner{
+  padding-top: 10em;
+}
+/* -------------------
+    Progress bar
+   ------------------- */
+#nprogress .bar {
+  background: #ff8800;
+  height: 2px;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px #ca6b03, 0 0 5px #ca6b03;
+}
+
+/* #iron-router-progress {
+    background-color : #008080;
+    box-shadow       : 0 0 5px #026565;
+}
+
+#iron-router-progress.spinner:before {
+    border-color : #8aadad;
+} */

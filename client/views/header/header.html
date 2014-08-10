@@ -1,0 +1,51 @@
+<template name="header">
+  <nav class="ui top orange floating sidebar labeled icon inverted menu active grid">
+
+    <div class="computer only row">
+        <h3 class="header item">rankz</h3>
+        <!-- <a class="{{activeRouteClass 'home'}} item" href="{{pathFor 'home'}}">
+          <i class="home icon"></i> Home
+        </a> -->
+        <a class="{{activeRouteClass 'games'}} item" href="{{pathFor 'games'}}">
+          <i class="sitemap icon"></i> Games
+        </a>
+        <a class="{{activeRouteClass 'scan'}} item " href="{{pathFor 'scan'}}">
+          <i class="tasks icon"></i> Points
+        </a>
+        <a class="{{activeRouteClass 'score'}} item " href="{{pathFor 'score'}}">
+          <i class="payment icon"></i> Score
+        </a>
+        <a class="{{activeRouteClass 'profile'}} item " href="{{pathFor 'profile'}}">
+          <i class="users icon"></i> {{username}}
+        </a>
+<!--         <span class="right floated text item ">
+  {{> accountButtons}}
+</span> -->
+    </div>
+
+
+
+
+    <div class="tablet mobile only row">
+
+      <!--   <a class="{{activeRouteClass 'home'}} item" href="{{pathFor 'home'}}">
+        <i class="home icon"></i>
+      </a> -->
+        <a class="{{activeRouteClass 'games'}} item" href="{{pathFor 'games'}}">
+          <i class="sitemap icon"></i>
+        </a>
+        <a class="{{activeRouteClass 'scan'}} item " href="{{pathFor 'scan'}}">
+          <i class="tasks icon"></i>
+        </a>
+        <a class="{{activeRouteClass 'score'}} item " href="{{pathFor 'score'}}">
+          <i class="payment icon"></i>
+        </a>
+        <a class="{{activeRouteClass 'profile'}} item" href="{{pathFor 'profile'}}">
+          <i class="user icon"></i>
+        </a>
+
+    </div>
+
+
+  </nav>
+</template>

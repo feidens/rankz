@@ -1,0 +1,64 @@
+<template name="games">
+    <p>Template games</p>
+
+    <h3 class="ui orange header">Games</h3>
+
+    {{> gamesAdd}}
+
+
+
+    {{#each gamesWithRank}}
+
+      <div class="ui padding-wrapper feed segment">
+        <div class="event">
+          <div class="label">
+            <i class="circular inverted {{getStatusIconClass}} icon"></i>
+          </div>
+          <div class="content">
+            <div class="date">
+
+              {{#if isAFit}}
+                <div class="ui vertical animated green action button">
+
+                  <div class="hidden content">{{i18n 'games.verify'}}</div>
+
+                  <div class="visible content">
+                    <i class="cart icon"></i>+1
+                  </div>
+
+                </div>
+              {{else}}
+                <a class="item" href="{{pathFor 'gameShow'}}">
+
+                  <div class="ui vertical animated action button">
+
+                    <div class="visible content">{{i18n 'games.show'}}</div>
+
+                    <div class="hidden content">
+                      <i class="cart icon"></i>+1
+                    </div>
+
+                  </div>
+                </a>
+
+              {{/if}}
+            </div>
+
+            <div class="summary">
+              {{i18n 'games.summaryLabel'}}{{type}}
+            </div>
+            <div class="extra text">
+              {{playerNames}}
+            </div>
+            <div class="extra text">
+              {{date}}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+    {{#if nextPath}}
+      <a class="load-more" href="{{nextPath}}">Load more</a>
+    {{/if}}
+
+</template>

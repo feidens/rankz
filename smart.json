@@ -1,0 +1,19 @@
+{
+  "packages": {
+    "iron-router": {},
+    "handlebar-helpers": {},
+    "semantic-ui": {},
+    "collection2": {},
+    "spin": {},
+    "fast-render": {},
+    "subs-manager": {},
+    "simple-form": {},
+    "npm": {},
+    "sugar-i18n": {},
+    "moment": {},
+    "autoform": {},
+    "cordova-loader": {},
+    "fastclick": {},
+    "auto-nprogress": {}
+  }
+}

@@ -1,0 +1,68 @@
+<template name='entrySignIn'>
+  <div class="three column doubling ui grid">
+    <div class="column"></div>
+    <div class="column">
+      {{#if logo}}
+        <div class="entry-logo">
+            <a href="/"><img src="{{logo}}" alt="logo"></a>
+        </div>
+      {{/if}}
+      <div class="one column ui grid">
+        <div class="column">
+        {{#if otherLoginServices}}
+        <div class="entry-social">
+          {{#each loginServices}}
+            {{> entrySocial}}
+          {{/each}}
+          {{#if passwordLoginService}}
+          <div class="email-option">
+            <strong class="line-thru or-sign-in">{{t9n "OR"}}</strong>
+          </div>
+          {{/if}}
+        </div>
+        {{/if}}
+        {{> entryError}}
+        {{#unless otherLoginServices}}
+
+          <h3>{{t9n "signIn"}}</h3>
+
+        {{/unless}}
+      </div>
+      </div>
+
+      {{#if passwordLoginService}}
+        <form class="ui form segment" id='signIn'>
+          <div class="field">
+            <label>{{t9n "username"}}</label>
+            <div class="ui left labeled icon input">
+              <input autofocus name="email" type="{{emailInputType}}" value='{{email}}' placeholder="{{emailPlaceholder}}">
+              <i class="user icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>{{t9n "password"}}</label>
+            <div class="ui left labeled icon input">
+              <input name="password" type="password" value='{{password}}' placeholder="{{t9n 'password'}}">
+              <i class="lock icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+            {{#unless isUsernameOnly}}
+              <p><a href="/forgot-password">{{t9n "forgotPassword"}}</a></p>
+              <button type="submit" class="fluid ui secondary submit button">{{t9n "signIn"}}</button>
+            {{/unless}}
+          </div>
+          <div class="ui error message">
+            <div class="header">We noticed some issues</div>
+          </div>
+      </form>
+      {{/if}}
+      <p class="entry-signup-cta">{{t9n "dontHaveAnAccount"}} <a href="/sign-up">{{t9n "signUp"}}</a></p>
+    </div>
+    <div class="column"></div>
+</div>
+</template>
