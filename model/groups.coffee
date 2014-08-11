@@ -21,6 +21,11 @@
       label: "Group avatar"
       optional: true
 
+    adminId:
+      type: String
+      label: "Admin id"
+      optional: true
+
     createdAt:
       type: Date
       optional: false
@@ -78,7 +83,7 @@ Meteor.methods
     # pick out the whitelisted keys
     group = _.extend(groupAttr,
       createdAt: new Date()
-
+      adminId: user._id
     )
     groupId = Groups.insert(group)
 
