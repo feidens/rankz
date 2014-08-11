@@ -2,164 +2,44 @@ Template.home.helpers
   feature: ->
     [
       {
-        text: "Fitting for all in one package"
-        icon: "archive"
+        text: "Elo point system ranking"
+        icon: "tasks"
         path: "#packages"
       }
       {
-        text: "Has a awesome backend features"
-        icon: "terminal"
+        text: "Compete in several Groups"
+        icon: "users"
         path: "#console-tool"
       }
       {
-        text: "Embraces HTML5"
-        icon: "html5"
+        text: "Creat an account and jump in"
+        icon: "user"
         color: "hover-orange"
         path: "#html5"
-      }
-      {
-        text: "Provides a structure"
-        icon: "folder"
-        path: "#structure"
       }
     ]
 
   package: ->
     [
       {
-        name: "Iron Router"
+        name: "Start value 1000"
         path: "https://github.com/EventedMind/iron-router"
       }
       {
-        name: "Collection2"
+        name: "k1 = 25"
         path: "https://github.com/aldeed/meteor-collection2"
       }
       {
-        name: "Semantic UI"
+        name: "k2 = 800"
         path: "http://semantic-ui.com/"
       }
       {
-        name: "less"
+        name: "We play darts"
         path: "http://lesscss.org/"
       }
-      {
-        name: "jQuery"
-        path: "http://jquery.com/"
-      }
-      {
-        name: "Underscore"
-        path: "http://underscorejs.org/"
-      }
-      {
-        name: "Handlebar Helpers"
-        path: "https://github.com/raix/Meteor-handlebar-helpers"
-      }
-      {
-        name: "Iron Router Progress"
-        path: "https://github.com/Multiply/iron-router-progress"
-      }
-      {
-        name: "Accounts UI & Password"
-        path: "http://docs.meteor.com/#accountsui"
-      }
     ]
 
-  consoleCommand: ->
-    [
-      {
-        command: "create:view"
-        description: "Creates a folder under client/views with html, less and javascript files."
-      }
-      {
-        command: "create:module"
-        description: "Similiar to a view, but under client/modules and for re-usable components"
-      }
-      {
-        command: "create:layout"
-        description: "Creates a layout template which yields your content, used by iron-router"
-      }
-      {
-        command: "create:common"
-        description: "Creates a simple html file under client/views/common"
-      }
-      {
-        command: "create:route"
-        description: "Creates a route javascript file under client/routes"
-      }
-      {
-        command: "create:model"
-        description: "Creates a model with files in model/, client/subscriptions and server/publications"
-      }
-      {
-        command: "create:test"
-        description: "Creates test file under tests"
-      }
-    ]
-
-  semanticElement: ->
-    [
-      {
-        what: "Large Buttons"
-        withBootstrap: "btn btn-lg"
-        withSemanticUI: "ui large button"
-      }
-      {
-        what: "One column"
-        withBootstrap: "col-md-1"
-        withSemanticUI: "one wide column"
-      }
-      {
-        what: "Vertical Menu / Navigation"
-        withBootstrap: "nav nav-pills"
-        withSemanticUI: "ui vertical menu"
-      }
-    ]
-
-  bootstrapCode: ->
-    "<div class=\"btn btn-primary btn-lg\"></div>"
-
-  folder: ->
-    [
-      {
-        root: "client"
-        children: [
-          "compatibility"
-          "config"
-          " lib"
-          " routes"
-          " startup"
-          " stylesheets"
-          "subscriptions"
-          "modules"
-          "views"
-        ]
-      }
-      {
-        root: "model"
-      }
-      {
-        root: "private"
-      }
-      {
-        root: "server"
-        children: [
-          "fixtures"
-          "lib"
-          "publications"
-          "startup"
-          "tests"
-        ]
-      }
-      {
-        root: "public"
-      }
-      {
-        root: "meteor-boilerplate"
-      }
-      {
-        root: "meteor-boilerplate.bat"
-      }
-    ]
+  
 
 
 Template.home.events {}

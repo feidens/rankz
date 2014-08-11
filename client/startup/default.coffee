@@ -4,8 +4,8 @@ Meteor.startup ->
     logo: '/public/images/background/background1.jpg'
     privacyUrl: '/privacy-policy'
     termsUrl: '/terms-of-use'
-    homeRoute: '/games'
-    dashboardRoute: '/games'
+    homeRoute: '/groups'
+    dashboardRoute: '/groups'
     profileRoute: '/profile'
     passwordSignupFields: 'USERNAME_ONLY'
     showSignupCode: false

@@ -130,4 +130,8 @@ Router.map ->
         path :  '/groups'
         controller :  GroupsListController
 
+Router.map ->
+    @route 'home',
+        path :  '/'
+
     return
