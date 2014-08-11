@@ -63,6 +63,6 @@ Meteor.methods
       playerIds: playerIds
       groupId: group._id
     }
-    game = Games.insert(game)
+    gameId = Games.insert(game)
 
-    return
+    return gameId

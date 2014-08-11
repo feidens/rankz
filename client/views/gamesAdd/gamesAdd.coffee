@@ -76,7 +76,8 @@ Template["gamesAdd"].events
             console.log("error")
            #Router.go('postPage', {_id: error.details});
         else
-          console.log(id)
+          console.log "GOOOO"
+          Router.go('gameShow', {_id: id});
       )
 
     $("input[id='submitAddGroup']").transition('slide down')
