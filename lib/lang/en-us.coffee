@@ -1,4 +1,6 @@
 i18n.map 'en-us',
+  header:
+    groups: "Groups and Points"
   profile:
     language: "Language"
     chooseLanguage: "Select language"
@@ -22,6 +24,8 @@ i18n.map 'en-us',
     submitJoin: "Beitreten"
   game:
     type: "Game type"
-    points: "Points or Place"
+    points: "Points or Rank"
+    rank: "Rank"
+    pointsValue: "Points"
   games:
     show: "Result"

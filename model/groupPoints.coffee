@@ -38,25 +38,32 @@ Meteor.methods
 
     user = Meteor.user()
 
-    console.log "ADAWDAWDADADLAWLDLLWA"
 
     # ensure the user is logged in
-    throw new Meteor.Error(401, "You need to login to post new stories") unless user
+    throw new Meteor.Error(401, "You need to login...") unless user
 
 
-    console.log(groupPointsElem)
-    # pick out the whitelisted keys
+    count = GroupPoints.find( { $and: [ {playerId: user._id}, {groupId: groupPointsElem.groupId} ] } ).count()
+
+
+
+    throw new Meteor.Error(300, "This user has already group points") if count
 
     groupPointsElem.createdAt = new Date()
-    groupPointsElem.value = 1200
+    groupPointsElem.value = 1000
     groupPointsElem.playerId = user._id
 
     console.log "pp3p"
 
     pGPId = GroupPoints.insert(groupPointsElem)
 
-    console.log "pp4p"
 
-    console.log pGPId
+    return
+
+  updateDartsGroupPoints: (changePlayer) ->
+    #GroupPoints.groupPointsElem
+    console.log "updateDartsGroupPoints"
+    console.log changePlayer
+    GroupPoints.update( { _id: changePlayer.groupPointsId }, { $inc: { value: changePlayer.delta } })
 
     return

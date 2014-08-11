@@ -3,10 +3,10 @@ Template['addGroup'].helpers
 Template['addGroup'].events
   "keyup input[id='addGroupName']": () ->
 
-    triggered = Session.get('triggered')
+    triggered = Session.get('triggeredAddGroup')
     $("input[id='submitAddGroup']").transition('slide down') if triggered
     triggered = false if triggered
-    Session.set('triggered', triggered)
+    Session.set('triggeredAddGroup', triggered)
 
   "submit form": (e) ->
 
@@ -41,6 +41,9 @@ Template['addGroup'].events
       )
 
     $("input[id='submitAddGroup']").transition('slide down')
-    Session.set('triggered', true)
+    Session.set('triggeredAddGroup', true)
 
     return
+
+Template["addGroup"].rendered = ->
+  Session.set('triggeredAddGroup', true)

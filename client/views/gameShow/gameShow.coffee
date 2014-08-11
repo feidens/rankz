@@ -6,6 +6,10 @@ Template["gameShow"].helpers
     console.log @game
     console.log "GamePoints print"
     console.log @gamePoints
+  printThis: ->
+    console.log "Print this"
+    console.log @
+
 
 
 Template["gameShow"].events
@@ -31,17 +35,13 @@ Template["gameShow"].events
     data = SimpleForm.processForm(event.target)
 
     console.log "Submit Show game"
-    console.log event
-    console.log event.target
-
-    console.log "this"
-    console.log @
 
 
     data.playerNames = @game.playerNames
 
     data.gameId = @game._id
     data.groupId = @game.groupId
+    data.gameType= @game.type
 
     console.log data
 

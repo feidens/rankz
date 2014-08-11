@@ -44,7 +44,7 @@ Meteor.methods
     user = Meteor.user()
 
     # ensure the user is logged in
-    throw new Meteor.Error(401, "You need to login to post new stories") unless user
+    throw new Meteor.Error(401, "You need to login...") unless user
 
     group = Groups.findOne groupname: gameAttr.groupname
 

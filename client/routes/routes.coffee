@@ -8,21 +8,21 @@ cachedSubs = new SubsManager(
 
 ProfileController = RouteController.extend
   template: 'profile'
-  waitOn: ->
-    cachedSubs.subscribe "playerGroups"
-    cachedSubs.subscribe "groupPoints"
-  playerGroups: ->
-    Groups.find {},
-      playerIds:
-        $in: [Meteor.userId()]
-
-      sort:
-        createdAt: -1
-        _id: -1
+  # waitOn: ->
+  #   cachedSubs.subscribe "playerGroups"
+  #   cachedSubs.subscribe "groupPoints"
+  # playerGroups: ->
+  #   Groups.find {},
+  #     playerIds:
+  #       $in: [Meteor.userId()]
+  #
+  #     sort:
+  #       createdAt: -1
+  #       _id: -1
 
 
   data: ->
-    {playerGroups:  @playerGroups(), profile: Meteor.users.findOne(Meteor.userId()).profile }
+    { profile: Meteor.users.findOne(Meteor.userId()).profile }
 
 
 
@@ -62,20 +62,22 @@ GameShowController = RouteController.extend
     template: 'gameShow'
     waitOn: ->
       [
-        cachedSubs.subscribe "gamepoints", @params._id
-        cachedSubs.subscribe "playerGames"
+        Meteor.subscribe "gamepoints", @params._id
+        Meteor.subscribe "playerGames"
       ]
     game: ->
       gameId = this.params._id
       Games.findOne
         _id: gameId
-      ,
-        sort:
-          createdAt: -1
-          _id: -1
+
     gPoints: ->
       gid = this.params._id
-      query = Gamepoints.find gameId: gid
+      query = Gamepoints.find {},
+        sort:
+          rank: +1
+
+
+
       query if query.count()
 
     data: ->
@@ -88,5 +90,44 @@ Router.map ->
     @route 'gameShow',
         path :  '/games/:_id'
         controller :  GameShowController
+
+    return
+
+
+
+# #####
+#  Groups List
+
+GroupsListController = RouteController.extend
+    template: 'groupsList'
+    waitOn: ->
+      Meteor.subscribe "playerGroups"
+      Meteor.subscribe "groupPoints"
+    playerGroups: ->
+      Groups.find {},
+        playerIds:
+          $in: [Meteor.userId()]
+
+        sort:
+          createdAt: -1
+          _id: -1
+    groupPoints: ->
+      GroupPoints.find {},
+        playerId: Meteor.userId()
+
+        sort:
+          createdAt: -1
+          _id: -1
+
+
+    data: ->
+        {playerGroups:  @playerGroups().fetch(), groupPoints: @groupPoints().fetch() }
+
+
+
+Router.map ->
+    @route 'groups',
+        path :  '/groups'
+        controller :  GroupsListController
 
     return

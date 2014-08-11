@@ -1,43 +1,48 @@
 <template name="gamesAdd">
     <p>Template gamesAdd</p>
 
+    <div class="ui segment">
+      <form class="ui form">
 
-    <form class="ui form">
-      <div class="ui two fields">
-        <div class="field">
-          <label>{{i18n 'game.type'}}</label>
-          <input name="type" type="text" placeholder="{{i18n 'game.type'}}">
+        <div class="ui two fields">
+          <div class="field">
+            <label>{{i18n 'game.type'}}</label>
+            <input name="type" type="text" placeholder="{{i18n 'game.type'}}" value="darts">
+          </div>
+          <div class="field">
+            <label>{{i18n 'group.name'}}</label>
+            <input id="groupName" name="groupname" type="text" placeholder="{{i18n 'group.name'}}">
+          </div>
         </div>
-        <div class="field">
-          <label>{{i18n 'group.name'}}</label>
-          <input id="groupName" name="groupname" type="text" placeholder="{{i18n 'group.name'}}">
+        <div class="ui five fields">
+        {{#each player}}
+          <div class="field">
+            <div class="ui toggle checkbox">
+              <input type="checkbox" id="{{this}}-id" name="{{this}}" value="{{this}}">
+              <label for="{{this}}-id">{{this}}</label>
+            </div>
+          </div>
+        {{/each}}
         </div>
+
+  <!--       <div class="field">
+    <label>{{this.name}}</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="status">
+      <div class="default text">Status</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item" data-value="2">Yes</div>
+        <div class="item" data-value="1">Unsure</div>
+        <div class="item" data-value="0">No</div>
       </div>
-      {{#each player}}
-        <div class="ui toggle checkbox">
-          <input type="checkbox" id="{{this}}-id" name="{{this}}" value="{{this}}">
-          <label for="{{this}}-id">{{this}}</label>
-        </div>
-      {{/each}}
-
-<!--       <div class="field">
-  <label>{{this.name}}</label>
-  <div class="ui selection dropdown">
-    <input type="hidden" name="status">
-    <div class="default text">Status</div>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item" data-value="2">Yes</div>
-      <div class="item" data-value="1">Unsure</div>
-      <div class="item" data-value="0">No</div>
     </div>
-  </div>
-</div> -->
+  </div> -->
 
 
-      <input type="submit" value="Submit" class="ui vertical animated green large submit button"/>
+        <input type="submit" value="Submit" class="ui vertical animated green large submit button"/>
 
 
-    </form>
-
+      </form>
+    </div>
 </template>

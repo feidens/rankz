@@ -1,4 +1,6 @@
 i18n.map 'de-de',
+  header:
+    groups: "Gruppen und Punkte"
   profile:
     language: "Sprache"
     chooseLanguage: "Sprache auswählen"
@@ -23,5 +25,7 @@ i18n.map 'de-de',
   game:
     type: "Spieltyp"
     points: "Punke bzw. Platzierung"
+    rank: "Platzierung"
+    pointsValue: "Punkte"
   games:
     show: "Punkte"

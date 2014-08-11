@@ -45,7 +45,7 @@ Meteor.methods
     user = Meteor.user()
 
     # ensure the user is logged in
-    throw new Meteor.Error(401, "You need to login to post new stories") unless user
+    throw new Meteor.Error(401, "You need to login...") unless user
 
     group = Groups.findOne groupname: groupAttr.groupname
 
@@ -58,6 +58,12 @@ Meteor.methods
         playerIds: user._id
         playerNames: user.username
 
+    groupPointsElem =
+      groupId: group._id
+
+
+    Meteor.call 'insertGroupPoints', groupPointsElem
+
     return
 
   insertGroup: (groupAttr) ->
@@ -65,7 +71,7 @@ Meteor.methods
     user = Meteor.user()
 
     # ensure the user is logged in
-    throw new Meteor.Error(401, "You need to login to post new stories") unless user
+    throw new Meteor.Error(401, "You need to login...") unless user
 
 
     console.log(groupAttr)

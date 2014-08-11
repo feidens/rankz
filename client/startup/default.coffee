@@ -11,8 +11,8 @@ Meteor.startup ->
     showSignupCode: false
     wrapLinks: false
     showOtherLoginServices: false
-    # defaultProfile:
-    #     language: i18n.getLanguage()
+    defaultProfile:
+      language: i18n.getLanguage()
     # extraSignUpFields: [{
     #     field: "name" # The database property you want to store the data in
     #     name: "" # An initial value for the field, if you want one

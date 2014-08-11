@@ -3,7 +3,26 @@
     {{print}}
 
     {{#if this.gamePoints}}
+      {{printThis}}
+      <div class="ui raised segment">
+      {{#each this.gamePoints}}
 
+            <div class="ui green ribbon label">{{playerName}}</div>
+            <p>
+              <div class="ui black header">
+                {{i18n 'game.rank'}}: <div class="ui orange label">{{rank}}</div>
+                <!-- <div class="sub header">An excellent color</div> -->
+              </div>
+
+              <div class="ui black header">
+                {{i18n 'game.pointsValue'}}: <div class="ui orange label">{{points}}</div>
+                <!-- <div class="sub header">An excellent color</div> -->
+              </div>
+
+            </p>
+
+      {{/each}}
+      </div>
     {{else}}
       <form class="ui form">
         {{#each this.game.playerNames}}
