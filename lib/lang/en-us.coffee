@@ -27,5 +27,6 @@ i18n.map 'en-us',
     points: "Points or Rank"
     rank: "Rank"
     pointsValue: "Points"
+    date: "Date"
   games:
     show: "Result"

@@ -16,7 +16,7 @@ Template["profile"].helpers
   isDefaultGender: ->
     return "default" unless @profile.gender
   languageText: ->
-    return i18n "profile.#{@.profile.language}" if @profile.language
+    return i18n "profile.#{@profile.language}" if @profile.language
     return i18n "profile.chooseLanguage"
   isDefaultLanguage: ->
     return "default" unless @profile.language

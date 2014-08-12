@@ -9,6 +9,8 @@ Template["gamesAdd"].helpers
   player: ->
     playerDep.depend()
     return @player
+  getDate: ->
+    new Date()
 
 
 Template["gamesAdd"].events
@@ -16,12 +18,15 @@ Template["gamesAdd"].events
     $("input[value='Submit']").transition('pulse')
 
   "click input[type='checkbox']": (e) ->
+    console.log "Before Check"
     console.log playerNames
 
     playerNames.push(e.target.value) if e.target.checked
     playerNames = _.without(playerNames, e.target.value) unless e.target.checked
 
     playerNames = _.uniq(playerNames);
+
+    console.log "After check"
     console.log playerNames
 
 
@@ -37,10 +42,11 @@ Template["gamesAdd"].events
       groupname
     )
     console.log group
-    console.log group.playerNames
+    console.log group.playerNames if group
 
 
-    @player = group.playerNames
+    @player = group.playerNames if group
+    @player = [] unless group
     console.log @player
     playerDep.changed()
     return
@@ -65,9 +71,11 @@ Template["gamesAdd"].events
     data = SimpleForm.processForm(event.target)
 
     data.playerNames = playerNames
+    data.date = $(e.target).find('[name=date]').val()
 
-
+    console.log "Submit game add data"
     console.log data
+
     Meteor.call('createGame', data, (error, id) ->
         if error
           # display the error to the user
@@ -88,3 +96,5 @@ Template["gamesAdd"].events
 
 
 Template["gamesAdd"].rendered = ->
+  player = []
+  playerNames = []

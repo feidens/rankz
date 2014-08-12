@@ -41,7 +41,9 @@ Template["gameShow"].events
 
     data.gameId = @game._id
     data.groupId = @game.groupId
-    data.gameType= @game.type
+    data.gameType = @game.type
+    data.date = @game.createdAt
+
 
     console.log data
 

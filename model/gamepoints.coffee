@@ -66,7 +66,14 @@ Meteor.methods
 
     gamePointsEntries = []
 
-    gamePointsEntries.push( { createdAt: new Date, rank: player.rank, playerId: player.id, points: 0, gameId: gameAttr.gameId, playerName: player.name, groupPointsEntry: GroupPoints.findOne( groupId: gameAttr.groupId, playerId: player.id) }) for player in players
+    console.log "Date!!"
+    console.log gameAttr.date.toString()
+    console.log new Date("Sat Aug 03 2014 11:27:29 GMT+0200 (CEST)")
+
+    date = new Date(gameAttr.date.toString())
+    date = new Date() unless date
+
+    gamePointsEntries.push( { createdAt: date, rank: player.rank, playerId: player.id, points: 0, gameId: gameAttr.gameId, playerName: player.name, groupPointsEntry: GroupPoints.findOne( groupId: gameAttr.groupId, playerId: player.id) }) for player in players
 
 
 
@@ -126,7 +133,7 @@ k2 = 800
 
 computeChange = (playerA, playerB) ->
   console.log "computeChange"
-  Math.round k1 * computeExpectation playerA, playerB
+  k1 - Math.round k1 * computeExpectation playerA, playerB
 
 computeExpectation = (playerA, playerB) ->
   console.log "computeExpectation"

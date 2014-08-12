@@ -54,10 +54,16 @@ Meteor.methods
 
     console.log playerIds
 
+    console.log "GAME gameAttr ------------"
     console.log(gameAttr)
     # pick out the whitelisted keys
+    date = new Date(gameAttr.date.toString())
+    date = new Date() unless date
+
+    console.log date
+
     game = {
-      createdAt: new Date()
+      createdAt: date
       playerNames: gameAttr.playerNames
       type: gameAttr.type
       playerIds: playerIds
