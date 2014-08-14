@@ -14,6 +14,11 @@ i18n.map 'en-us',
   common:
     notFound: "Seems like you found a secret"
     goBack: "Back to business"
+    or: "or"
+    accessDenied:
+      title: "You must register or log in before you can do that!"
+      register: "Registrieren"
+      signin: "Anmelden"
   group:
     yourGroupTitle: "Your Groups"
     name: "Group name"
@@ -24,7 +29,7 @@ i18n.map 'en-us',
     submitJoin: "Beitreten"
   game:
     type: "Game type"
-    points: "Points or Rank"
+    points: "Rank 1, ..., n"
     rank: "Rank"
     pointsValue: "Points"
     date: "Date"

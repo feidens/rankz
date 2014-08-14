@@ -1,6 +1,9 @@
 i18n.map 'de-de',
   header:
     groups: "Gruppen und Punkte"
+  accessDenied:
+    title: "Du musst dich zuerst anmelden oder dich registrieren!"
+    register: "registration"
   profile:
     language: "Sprache"
     chooseLanguage: "Sprache auswählen"
@@ -14,6 +17,11 @@ i18n.map 'de-de',
   common:
     notFound: "Du hast ein Geheimnis entdeckt..."
     goBack: "Zurück zur Normalität"
+    or: "oder"
+    accessDenied:
+      title: "Du musst dich zuerst anmelden oder dich registrieren!"
+      register: "Registrieren"
+      signin: "Anmelden"
   group:
     yourGroupTitle: "Deine Gruppen"
     name: "Guppenname"
@@ -24,7 +32,7 @@ i18n.map 'de-de',
     submitJoin: "Beitreten"
   game:
     type: "Spieltyp"
-    points: "Punke bzw. Platzierung"
+    points: "Platzierung 1, ..., n"
     rank: "Platzierung"
     pointsValue: "Punkte"
     date: "Datum"

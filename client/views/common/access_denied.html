@@ -2,9 +2,11 @@
   <div class="ui warning message">
     <i class="close icon"></i>
     <div class="header">
-      You must register before you can do that!
+      {{i18n 'common.accessDenied.title'}}
     </div>
-      Visit our <a href="{{pathFor 'entrySignUp'}}">registration page</a>, then try again
+      <a href="{{pathFor 'entrySignUp'}}">{{i18n 'common.accessDenied.register'}}</a>
+      {{i18n 'common.or'}}
+      <a href="{{pathFor 'entrySignIn'}}">{{i18n 'common.accessDenied.signin'}}</a>
 
   </div>
 </template>
