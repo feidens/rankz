@@ -1,9 +1,7 @@
 i18n.map 'de-de',
   header:
     groups: "Gruppen und Punkte"
-  accessDenied:
-    title: "Du musst dich zuerst anmelden oder dich registrieren!"
-    register: "registration"
+    rank: "Rank"
   profile:
     language: "Sprache"
     chooseLanguage: "Sprache auswählen"
@@ -30,6 +28,7 @@ i18n.map 'de-de',
     joinTitle: "Trete einer Gruppe bei"
     join: "Gruppename"
     submitJoin: "Beitreten"
+    memberCount: "Spieleranzahl"
   game:
     type: "Spieltyp"
     points: "Platzierung 1, ..., n"

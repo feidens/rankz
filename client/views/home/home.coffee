@@ -2,17 +2,22 @@ Template.home.helpers
   feature: ->
     [
       {
-        text: "Elo point system ranking"
+        text: "Elo system ranking"
         icon: "tasks"
-        path: "#packages"
+        path: "http://en.wikipedia.org/wiki/Elo_rating_system"
       }
       {
-        text: "Compete in several Groups"
+        text: "Create a group, invite your friends..."
+        icon: "plus"
+        path: "#console-tool"
+      }
+      {
+        text: "Compete with your friends in group rankings"
         icon: "users"
         path: "#console-tool"
       }
       {
-        text: "Creat an account and jump in"
+        text: "Create an account and jump in"
         icon: "user"
         color: "hover-orange"
         path: "#html5"
@@ -22,24 +27,24 @@ Template.home.helpers
   package: ->
     [
       {
-        name: "Start value 1000"
-        path: "https://github.com/EventedMind/iron-router"
+        name: "Elo system: Start value 1000"
+        path: "http://en.wikipedia.org/wiki/Elo_rating_system"
       }
       {
-        name: "k1 = 25"
-        path: "https://github.com/aldeed/meteor-collection2"
+        name: "Play a competitive game elsewhere and create a ranking on rankz"
+        path: "http://en.wikipedia.org/wiki/Elo_rating_system"
       }
       {
-        name: "k2 = 800"
-        path: "http://semantic-ui.com/"
+        name: "More to come in the future"
+        path: "https://github.com/feidens/rankz"
       }
       {
-        name: "We play darts"
-        path: "http://lesscss.org/"
+        name: "Improvement or questions? Than go to github!"
+        path: "https://github.com/feidens/rankz"
       }
     ]
 
-  
+
 
 
 Template.home.events {}

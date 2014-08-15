@@ -1,6 +1,7 @@
 i18n.map 'en-us',
   header:
     groups: "Groups and Points"
+    rank: "Rank"
   profile:
     language: "Language"
     chooseLanguage: "Select language"
@@ -17,8 +18,8 @@ i18n.map 'en-us',
     or: "or"
     accessDenied:
       title: "You must register or log in before you can do that!"
-      register: "Registrieren"
-      signin: "Anmelden"
+      register: "Sign up"
+      signin: "Sign in"
   group:
     yourGroupTitle: "Your Groups"
     name: "Group name"
@@ -26,7 +27,8 @@ i18n.map 'en-us',
     add: "Create new Group"
     joinTitle: "Join a group"
     join: "Group name"
-    submitJoin: "Beitreten"
+    submitJoin: "Join"
+    memberCount: "Player count"
   game:
     type: "Game type"
     points: "Rank 1, ..., n"

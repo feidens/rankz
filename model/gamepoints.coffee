@@ -93,7 +93,7 @@ Meteor.methods
 
 
 
-    if gameAttr.gameType is "darts"
+    if gameAttr.gameType
       for playerA in gamePointsEntries
 
         for playerB in gamePointsEntries
@@ -122,9 +122,9 @@ Meteor.methods
             playerB.points += -delta
             Meteor.call "updateDartsGroupPoints", changePlayer
 
-    console.log gamePointsEntries
+      console.log gamePointsEntries
 
-    Gamepoints.insert(gamePointEntry) for gamePointEntry in gamePointsEntries
+      Gamepoints.insert(gamePointEntry) for gamePointEntry in gamePointsEntries
 
     return
 

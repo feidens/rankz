@@ -18,4 +18,4 @@ requireLogin = (pause) ->
 
 
 Router.onBeforeAction 'loading'
-Router.onBeforeAction(requireLogin, {only: ['groups', 'games', 'profile']})
+Router.onBeforeAction(requireLogin, {only: ['groups', 'games', 'profile', 'rank', 'rankShow', 'gameShow']})

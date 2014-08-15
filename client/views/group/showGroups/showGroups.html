@@ -1,25 +1,27 @@
 <template name="showGroups">
 
       <div class="ui piled green segment">
-        <div class="ui three doubling column grid">
-          <div class="column">
-            <h2 class="ui header">
-              <i class="icon inverted circular green users"></i> {{this.groupname}}
-            </h2>
+        <a class="item" href="{{pathFor 'rankShow'}}">
+          <div class="ui three doubling column grid">
+            <div class="column">
+              <h2 class="ui header">
+                <i class="icon inverted circular green users"></i> {{this.groupname}}
+              </h2>
 
 
+            </div>
+
+            <div class="column">
+            <h3 class="ui header">
+              <i class="icon inverted circular green tasks"></i> {{this.points}}
+            </h3>
+            </div>
+
+            <div class="column">
+
+            </div>
           </div>
-
-          <div class="column">
-          <h3 class="ui header">
-            <i class="icon inverted circular green tasks"></i> {{this.points}}
-          </h3>
-          </div>
-
-          <div class="column">
-
-          </div>
-        </div>
+        </a>
       </div>
 
 

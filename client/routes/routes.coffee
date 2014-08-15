@@ -130,8 +130,87 @@ Router.map ->
         path :  '/groups'
         controller :  GroupsListController
 
+    return
+
 Router.map ->
     @route 'home',
         path :  '/'
+
+    return
+
+
+# #####
+#  Rank List
+
+RankListController = RouteController.extend
+    template: 'rankList'
+    waitOn: ->
+        Meteor.subscribe "playerGroups"
+        Meteor.subscribe "groupPoints"
+      playerGroups: ->
+        Groups.find {},
+          playerIds:
+            $in: [Meteor.userId()]
+
+          sort:
+            createdAt: -1
+            _id: -1
+      groupPoints: ->
+        GroupPoints.find {},
+          playerId: Meteor.userId()
+
+          sort:
+            createdAt: -1
+            _id: -1
+
+
+      data: ->
+          {playerGroups:  @playerGroups().fetch(), groupPoints: @groupPoints().fetch() }
+
+
+
+Router.map ->
+    @route 'rank',
+        path :  '/rank'
+        controller :  RankListController
+
+    return
+
+
+# #####
+# Rank Show
+
+RankShowController  = RouteController.extend
+    template: 'rankShow'
+    waitOn: ->
+      [
+        Meteor.subscribe "groupPointsById", @params._id
+        Meteor.subscribe "playerGroups"
+      ]
+    group: ->
+      groupId = @params._id
+      Groups.findOne
+        _id: groupId
+
+    groupPoints: ->
+      gid = this.params._id
+      query = GroupPoints.find {},
+        sort:
+          value: -1
+
+
+
+      query if query.count()
+
+    data: ->
+      {group:  @group(), groupPoints: @groupPoints() }
+
+
+
+
+Router.map ->
+    @route 'rankShow',
+        path :  '/rank/:_id'
+        controller :  RankShowController
 
     return
