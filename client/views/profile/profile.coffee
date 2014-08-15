@@ -16,8 +16,8 @@ Template["profile"].helpers
   isDefaultGender: ->
     return "default" unless @profile.gender
   languageText: ->
-    return i18n "profile.#{@profile.language}" if @profile.language
-    return i18n "profile.chooseLanguage"
+    return i18n "profile.#{@.profile.language}" if @profile.language and not Session.get('reloadLanguage')
+    return i18n "profile.chooseLanguage" unless Session.get('reloadLanguage')
   isDefaultLanguage: ->
     return "default" unless @profile.language
 
@@ -51,6 +51,8 @@ Template["profile"].events
 
     data = SimpleForm.processForm(event.target)
 
+    Session.set('reloadLanguage', true) if data.language
+
     data.gender = @profile.gender unless data.gender
     data.style = @profile.style unless data.style
     data.language = @profile.language unless data.language
@@ -83,3 +85,6 @@ Template["profile"].rendered = ->
 
   $('.ui.selection.dropdown')
     .dropdown()
+  
+
+  Session.set('reloadLanguage', false) if Session.get('reloadLanguage')
