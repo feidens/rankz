@@ -1,0 +1,23 @@
+
+standard-app-packages
+less
+jquery
+underscore
+raix:handlebar-helpers@0.1.1
+cmather:iron-router@0.8.2
+accounts-password
+accounts-ui
+nooitaf:semantic-ui@0.19.0
+aldeed:collection2@0.4.5
+coffeescript
+sacha:spin@2.0.4
+aldeed:autoform@0.16.1
+arunoda:fast-render@0.2.8
+arunoda:subs-manager@1.0.1
+joshowens:simple-form@0.1.8
+arunoda:npm@0.2.6
+chrismbeckett:sugar-i18n@0.1.0
+mrt:moment@2.6.0
+percolatestudio:fastclick@0.6.7
+# mrt:auto-nprogress@0.2.8
+mrt:just-i18n

@@ -10,7 +10,7 @@ Template["gamesAdd"].helpers
     playerDep.depend()
     return @player
   getDate: ->
-    new Date()
+    moment(new Date()).format('dddd, DD.MM.YYYY')
 
 
 Template["gamesAdd"].events
@@ -51,7 +51,7 @@ Template["gamesAdd"].events
     playerDep.changed()
     return
 
-  "submit form": (e) ->
+  "submit form": (e, template) ->
 
     e.preventDefault()
 
@@ -68,10 +68,10 @@ Template["gamesAdd"].events
     # }
 
 
-    data = SimpleForm.processForm(event.target)
+    data = SimpleForm.processForm(e.target)
 
     data.playerNames = playerNames
-    data.date = $(e.target).find('[name=date]').val()
+    data.date = template.picker.getMoment().toDate()
 
     console.log "Submit game add data"
     console.log data
@@ -98,3 +98,15 @@ Template["gamesAdd"].events
 Template["gamesAdd"].rendered = ->
   player = []
   playerNames = []
+  console.log @
+  @picker = new Pikaday(
+    field: document.getElementById('datepicker')
+    format: 'dddd, DD.MM.YYYY'
+    defaultDate: moment(new Date()).format('dddd, DD.MM.YYYY')
+    setDefaultDate: true
+    onSelect: ->
+      console.log this
+      console.log this.getMoment().format('dddd, DD.MM.YYYY')
+      return
+  )
+  console.log @

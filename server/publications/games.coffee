@@ -8,3 +8,17 @@ Meteor.publish 'playerGames', ->
       sort:
         createdAt: -1
         _id: -1
+
+
+Meteor.publish 'groupPlayerGames', (groupId) ->
+  Games.find
+    playerIds:
+      $in: [
+        @userId
+        ]
+    ,
+    groupId: groupId
+    ,
+      sort:
+        createdAt: -1
+        _id: -1

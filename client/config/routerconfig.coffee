@@ -1,4 +1,4 @@
-NProgress.configure({ showSpinner: false })
+# NProgress.configure({ showSpinner: false })
 
 Router.configure
   layoutTemplate: 'basicLayout'
@@ -6,14 +6,12 @@ Router.configure
   notFoundTemplate: 'notFound'
 
 
-
 requireLogin = (pause) ->
-  unless Meteor.user()
-    if Meteor.loggingIn()
-      @render 'loading'
-    else
-      @render "accessDenied"
-    pause()
+  unless Meteor.userId()
+    Router.go 'atSignIn'
+  else
+    @next()
+  return
 
 
 
