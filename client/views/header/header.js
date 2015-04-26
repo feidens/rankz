@@ -11,7 +11,11 @@ Template['header'].helpers({
       return active && 'active';
     },
   username: function() {
-    return Meteor.user().username;
+    console.log(Meteor.user());
+    if(Meteor.user()) {
+      return Meteor.user().username;
+    }
+
   }
 });
 

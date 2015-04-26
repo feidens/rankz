@@ -16,7 +16,7 @@ Template["groupJoin"].events
     e.preventDefault()
 
 
-    data = SimpleForm.processForm(event.target)
+    data = SimpleForm.processForm(e.target)
 
 
 

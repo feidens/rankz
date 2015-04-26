@@ -49,7 +49,7 @@ Template["profile"].events
     # }
 
 
-    data = SimpleForm.processForm(event.target)
+    data = SimpleForm.processForm(e.target)
 
     Session.set('reloadLanguage', true) if data.language
 
@@ -85,6 +85,6 @@ Template["profile"].rendered = ->
 
   $('.ui.selection.dropdown')
     .dropdown()
-  
+
 
   Session.set('reloadLanguage', false) if Session.get('reloadLanguage')

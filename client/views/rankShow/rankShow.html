@@ -2,6 +2,8 @@
 
     <h3 class="ui orange header">Rank</h3>
 
+    {{print}}
+
     {{calcPlayers}}
 
     <table class="ui inverted orange table segment">
@@ -17,7 +19,7 @@
         {{print}}
         <tr>
           <td>{{this.username}}</td>
-          <td>{{this.value}}</td>
+          <td>{{this.value}} - {{this.gamesPlayed}}</td>
         </tr>
 
       {{/each}}

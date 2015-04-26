@@ -4,6 +4,21 @@ playerDep = new Deps.Dependency
 Template["rankShow"].helpers
   ownDoc: ->
     @userId is Meteor.userId()
+  print: ->
+
+    a = Games.find
+      playerIds:
+        $in: [
+          Meteor.userId()
+          ]
+      ,
+        sort:
+          createdAt: -1
+          _id: -1
+
+    console.log a.count()
+
+    return
 
   calcPlayers: ->
     players = []
@@ -18,7 +33,18 @@ Template["rankShow"].helpers
               console.log('error')
              #Router.go('postPage', {_id: error.details});
           else
-            players.push( {username: elem.username, value: elem.value} )
+            gamesPlayed = Games.find
+              playerIds:
+                $in: [
+                  elem.playerId
+                  ]
+              ,
+                sort:
+                  createdAt: -1
+                  _id: -1
+
+
+            players.push( {username: elem.username, value: elem.value, gamesPlayed: gamesPlayed.count()} )
 
             playerDep.changed()
             return

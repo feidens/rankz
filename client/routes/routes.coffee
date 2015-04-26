@@ -19,10 +19,13 @@ ProfileController = RouteController.extend
   #     sort:
   #       createdAt: -1
   #       _id: -1
-
+  userProfile: ->
+    console.log Meteor.users
+    console.log Meteor.userId()
+    Meteor.users.findOne()
 
   data: ->
-    { profile: Meteor.users.findOne(Meteor.userId()).profile }
+    @userProfile()
 
 
 
@@ -186,6 +189,7 @@ RankShowController  = RouteController.extend
       [
         Meteor.subscribe "groupPointsById", @params._id
         Meteor.subscribe "playerGroups"
+        Meteor.subscribe "groupPlayerGames", @params._id
       ]
     group: ->
       groupId = @params._id
@@ -197,13 +201,15 @@ RankShowController  = RouteController.extend
       query = GroupPoints.find {},
         sort:
           value: -1
-
-
-
       query if query.count()
 
+    groupPlayerGames: ->
+      groupId = this.params._id
+      Games.find
+        groupId: groupId
+
     data: ->
-      {group:  @group(), groupPoints: @groupPoints() }
+      { group:  @group(), groupPoints: @groupPoints(), groupPlayerGames: @groupPlayerGames() }
 
 
 

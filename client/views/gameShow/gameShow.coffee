@@ -32,7 +32,7 @@ Template["gameShow"].events
     # }
 
 
-    data = SimpleForm.processForm(event.target)
+    data = SimpleForm.processForm(e.target)
 
     console.log "Submit Show game"
 

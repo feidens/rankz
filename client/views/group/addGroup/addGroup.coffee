@@ -25,7 +25,7 @@ Template['addGroup'].events
     # }
 
 
-    data = SimpleForm.processForm(event.target)
+    data = SimpleForm.processForm(e.target)
 
 
 
