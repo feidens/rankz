@@ -24,9 +24,19 @@ Template["profile"].helpers
 
 Template["profile"].events
 
+
+  "click #signout": (e, f) ->
+    console.log 'Wooooot'
+    Meteor.logout (err) ->
+      # callback
+      Router.go('/sign-in')
+      return
+
+
   "click input[value='Submit']": (e) ->
     $("input[value='Submit']").transition('slide down')
     Session.set('triggered', true)
+    return
 
   "submit form": (e) ->
 

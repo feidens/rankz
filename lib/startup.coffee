@@ -94,36 +94,16 @@ AccountsTemplates.addFields [
     re: /.+@(.+){2,}\.(.+){2,}/
     errStr: "Invalid email"
   }
-  {
-    _id: "gender"
-    type: "radio"
-    required: false
-    displayName: "Gender"
-    select: [
-      {
-        text: "Male"
-        value: "man"
-      }
-      {
-        text: "Female"
-        value: "woman"
-      }
-    ]
-  }
-  {
-    _id: "style"
-    type: "radio"
-    required: false
-    displayName: "Style"
-    select: [
-      {
-        text: "Normal"
-        value: "normal"
-      }
-      {
-        text: "Casual"
-        value: "casual"
-      }
-    ]
-  }
 ]
+AccountsTemplates.removeField 'password'
+AccountsTemplates.addField {
+    _id: 'password',
+    type: 'password',
+    placeholder: {
+        signUp: "At least six characters"
+    },
+    required: true,
+    minLength: 6,
+    re: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/,
+    errStr: 'At least 1 digit, 1 lowercase and 1 uppercase',
+}
