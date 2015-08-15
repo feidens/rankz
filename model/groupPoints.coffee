@@ -5,6 +5,11 @@
       label: "Player id"
       optional: false
 
+    playerName:
+      type: String
+      label: "Player Name"
+      optional: false
+
     groupId:
       type: String
       label: "Group id"
@@ -53,7 +58,7 @@ Meteor.methods
     groupPointsElem.value = 1000
     groupPointsElem.playerId = user._id
 
-    console.log "pp3p"
+    groupPointsElem.playerName = user.username
 
     pGPId = GroupPoints.insert(groupPointsElem)
 

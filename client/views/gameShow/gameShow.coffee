@@ -9,6 +9,20 @@ Template["gameShow"].helpers
   printThis: ->
     console.log "Print this"
     console.log @
+  getPoints:->
+    data = {}
+    data._id = @game.groupId
+    console.log 'GET POINTS IN SHOW'
+    Meteor.call('getGamePoints', data, (error, id) ->
+        if error
+          # display the error to the user
+          #Errors.throw(error.reason);
+          if (error.error == 302)
+            console.log("error")
+           #Router.go('postPage', {_id: error.details});
+        else
+          console.log(id)
+      )
 
 
 
@@ -55,7 +69,7 @@ Template["gameShow"].events
             console.log("error")
            #Router.go('postPage', {_id: error.details});
         else
-          console.log(id)
+          console.log id
       )
 
     $("input[id='submitAddGroup']").transition('slide down')

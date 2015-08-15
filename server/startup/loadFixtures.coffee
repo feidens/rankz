@@ -8,6 +8,7 @@ loadFixture = (fixtures) ->
     i += 1
   return
 Meteor.startup ->
+    
 
 
   return

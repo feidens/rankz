@@ -10,6 +10,15 @@ Meteor.publish 'playerGames', ->
         _id: -1
 
 
+Meteor.publish 'games', (gameId) ->
+  Games.find
+    _id: gameId
+    ,
+      sort:
+        createdAt: -1
+        _id: -1
+
+
 Meteor.publish 'groupPlayerGames', (groupId) ->
   Games.find
     playerIds:

@@ -9,11 +9,16 @@
     {{#each gamesWithRank}}
 
       <div class="ui padding-wrapper feed segment">
+        <a id='trash' class="ui bottom right attached label">
+            <i class="trash icon"></i>
+        </a>
         <div class="event">
+
           <div class="label">
             <i class="circular inverted {{getStatusIconClass}} icon"></i>
           </div>
           <div class="content">
+
             <div class="date">
 
               {{#if isAFit}}
@@ -38,6 +43,7 @@
                     </div>
 
                   </div>
+
                 </a>
 
               {{/if}}
@@ -52,6 +58,7 @@
             <div class="extra text">
               {{date}}
             </div>
+
           </div>
         </div>
       </div>

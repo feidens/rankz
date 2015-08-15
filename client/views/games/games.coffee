@@ -12,7 +12,7 @@ Template["games"].helpers
 
   getStatusIconClass: ->
 
-    iconClass = "lab"
+    iconClass = "bullseye"
     iconClass = "checkmark green" if @status is 2
     iconClass = "ban circle red" if @status is 0
     iconClass = "question purple" if @status is 1
@@ -28,8 +28,37 @@ Template["games"].helpers
 
 
 Template["games"].events
-  
+  "click #trash": (e, f) ->
+    console.log 'Wooooot'
+    console.log @
+    console.log  Games.remove _id : @._id
 
+
+    Meteor.call('removeGamePoints', @._id, (error, id) ->
+        if error
+          # display the error to the user
+          #Errors.throw(error.reason);
+          if (error.error == 302)
+            console.log("error")
+           #Router.go('postPage', {_id: error.details});
+        else
+          console.log(id)
+      )
+
+
+    Meteor.call('getGamePoints', @groupId, (error, id) ->
+        if error
+          # display the error to the user
+          #Errors.throw(error.reason);
+          if (error.error == 302)
+            console.log("error")
+           #Router.go('postPage', {_id: error.details});
+        else
+          console.log(id)
+      )
+
+
+    return
 
 
 Template["games"].rendered = ->
