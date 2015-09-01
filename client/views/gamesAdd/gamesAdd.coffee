@@ -30,6 +30,23 @@ Template["gamesAdd"].events
     console.log playerNames
 
 
+  "change input[id='groupName']": () ->
+
+
+    groupname = $("input[id='groupName']").val()
+    console.log groupname
+    group = Groups.findOne( groupname:
+      groupname
+    )
+    console.log group
+    console.log group.playerNames if group
+
+
+    @player = group.playerNames if group
+    @player = [] unless group
+    console.log @player
+    playerDep.changed()
+    return
 
 
 

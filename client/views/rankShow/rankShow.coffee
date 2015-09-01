@@ -34,6 +34,7 @@ Template["rankShow"].helpers
                 sort:
                   createdAt: -1
                   _id: -1
+                reactive: false
 
 
             players.push( {username: elem.username, value: elem.value, gamesPlayed: gamesPlayed.count()} )
@@ -58,7 +59,7 @@ Template["rankShow"].events
 Template.rankShow.rendered = ->
   players = []
 
-  grpPoints = GroupPoints.find( { groupId:   @data.group._id }, {fields:{playerName:1}} ).fetch()
+  grpPoints = GroupPoints.find( { groupId:   @data.group._id }, {fields:{playerName:1} } ).fetch()
   console.log 'GRP POINTS'
   console.log grpPoints
   pointList = []

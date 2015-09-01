@@ -230,9 +230,9 @@ Meteor.methods
     console.log 'DIFF'
     console.log playerIds
 
-    gamePointsEntries.push( { createdAt: date, rank: player.rank, playerId: player.id, points: 0, gameId: gameAttr.gameId, groupId: gameAttr.groupId , playerName: player.name, groupPointsEntry: GroupPoints.findOne( groupId: gameAttr.groupId, playerId: player.id) },  { reactive: false } ) for player in players
+    gamePointsEntries.push( { createdAt: date, rank: player.rank, playerId: player.id, points: 0, gameId: gameAttr.gameId, groupId: gameAttr.groupId , playerName: player.name, groupPointsEntry: GroupPoints.findOne( {groupId: gameAttr.groupId, playerId: player.id },  { reactive: false } ) } ) for player in players
 
-    Gamepoints.insert({createdAt: date, rank: -1, playerId: player.id, points: 0, gameId: gameAttr.gameId, groupId: gameAttr.groupId , playerName:  Meteor.users.findOne( _id: playerId ).username}) for playerId in playerIds
+    Gamepoints.insert( {createdAt: date, rank: -1, playerId: player.id, points: 0, gameId: gameAttr.gameId, groupId: gameAttr.groupId , playerName:  Meteor.users.findOne( _id: playerId ).username}) for playerId in playerIds
 
 
     # static private int k1 = 25;

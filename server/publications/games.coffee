@@ -1,9 +1,26 @@
 Meteor.publish 'playerGames', ->
-  Games.find
+  groups = Groups.find
     playerIds:
-      $in: [
-        @userId
-        ]
+      $in: [ @userId ]
+    ,
+      fields:
+        _id: true
+
+  console.log "GGG"
+  ids = groups.fetch()
+  console.log ids
+
+  ids = _.map(ids, (value, index) ->
+    return value._id;
+  )
+
+  console.log ids
+
+
+  Games.find
+    groupId:
+      $in:
+        ids
     ,
       sort:
         createdAt: -1

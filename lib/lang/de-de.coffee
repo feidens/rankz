@@ -35,5 +35,6 @@ i18n.map 'de-de',
     rank: "Platzierung"
     pointsValue: "Punkte"
     date: "Datum"
+    group: "Gruppe: "
   games:
     show: "Punkte"

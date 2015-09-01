@@ -25,6 +25,18 @@ Template["games"].helpers
   isAFit: ->
     return true if @status is 2
 
+  isAdmin: ->
+    console.log 'isAdmin'
+    console.log @
+    group = Groups.findOne @groupId
+    console.log group
+    Meteor.userId() == group.adminId
+
+  getGroup: ->
+    console.log 'Get Group'
+    Groups.findOne( @groupId ).groupname
+
+
 
 
 Template["games"].events

@@ -42,12 +42,12 @@ GamesController = RouteController.extend
   template: 'games'
   waitOn: ->
     [
-      cachedSubs.subscribe 'playerGames'
+      Meteor.subscribe 'playerGames'
       cachedSubs.subscribe "playerGroups"
     ]
 
   games: ->
-     Games.find {}, {sort: {createdAt: -1, _id: -1}}
+    Games.find {}, {sort: {createdAt: -1, _id: -1}}
   data: ->
     games: @games()
 
