@@ -68,7 +68,7 @@ Template.rankShow.rendered = ->
     console.log gamepoints
 
     y = 1000
-    x = 1
+    x = 0
     Y = []
     Y.push {x : x , y : y}
 

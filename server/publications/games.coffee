@@ -38,11 +38,6 @@ Meteor.publish 'games', (gameId) ->
 
 Meteor.publish 'groupPlayerGames', (groupId) ->
   Games.find
-    playerIds:
-      $in: [
-        @userId
-        ]
-    ,
     groupId: groupId
     ,
       sort:
