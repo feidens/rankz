@@ -126,11 +126,29 @@ Meteor.methods
       console.log game.createdAt.toString()
 
       date = new Date(game.createdAt.toString())
-      date = new Date()
+
+
+      # Add Zero Points for everyone for this game
+      group = Groups.findOne( { _id: game.groupId }, {reactive:false} )
+      console.log 'GROUP'
+      console.log group
+      playerIds = group.playerIds
+
+      gamePlayerIds = _.map players, (o) ->
+        o.id
+
+      console.log 'PID'
+      console.log gamePlayerIds
+      playerIds = _.difference playerIds, gamePlayerIds
+      console.log 'DIFF'
+      console.log playerIds
+
+
+
+      Gamepoints.update({gameId: game._id, playerId: playerId} , { $set: {createdAt: game.createdAt, rank: -1, playerId: playerId, points: 0, gameId: game._id, groupId: game.groupId , playerName:  Meteor.users.findOne( _id: playerId ).username} }, { upsert: true }) for playerId in playerIds
+
 
       # Get rank
-
-
 
 
       gamePointsEntries.push( { gamePointsId: Gamepoints.findOne( { gameId: game._id, playerName: player.name } , { reactive: false } )._id , createdAt: date, rank: player.rank, playerId: player.id, points: 0, gameId: game._id, groupId: game.groupId ,playerName: player.name , groupPointsEntry: GroupPoints.findOne({groupId: game.groupId, playerId: player.id}, {reactive:false}) }) for player in players
@@ -232,7 +250,7 @@ Meteor.methods
 
     gamePointsEntries.push( { createdAt: date, rank: player.rank, playerId: player.id, points: 0, gameId: gameAttr.gameId, groupId: gameAttr.groupId , playerName: player.name, groupPointsEntry: GroupPoints.findOne( {groupId: gameAttr.groupId, playerId: player.id },  { reactive: false } ) } ) for player in players
 
-    Gamepoints.insert( {createdAt: date, rank: -1, playerId: player.id, points: 0, gameId: gameAttr.gameId, groupId: gameAttr.groupId , playerName:  Meteor.users.findOne( _id: playerId ).username}) for playerId in playerIds
+    Gamepoints.insert( {createdAt: date, rank: -1, playerId: playerId, points: 0, gameId: gameAttr.gameId, groupId: gameAttr.groupId , playerName:  Meteor.users.findOne( _id: playerId ).username}) for playerId in playerIds
 
 
     # static private int k1 = 25;

@@ -64,9 +64,12 @@ Template.rankShow.rendered = ->
   console.log grpPoints
   pointList = []
   for player in grpPoints
-    gamepoints = Gamepoints.find( { groupId: @data.group._id, playerName: player.playerName  } , { reactive: false } ).fetch()
+    gamepoints = Gamepoints.find( { groupId: @data.group._id, playerName: player.playerName  } , {sort: {createdAt: 1}, reactive: false } ).fetch()
+    console.log 'G Points'
+
     console.log gamepoints
 
+    console.log 'G Points End'
     y = 1000
     x = 0
     Y = []
@@ -76,6 +79,8 @@ Template.rankShow.rendered = ->
     for gamepointEntry in gamepoints
       console.log gamepointEntry
       y = y + gamepointEntry.points
+      console.log 'date'
+      console.log moment(gamepointEntry.createdAt).format('DD.MM.YYYY')
       x = x + 1
       Y.push {x : x , y : y}
 
@@ -87,7 +92,7 @@ Template.rankShow.rendered = ->
 
   chart = nv.models.lineChart().margin(left: 100).useInteractiveGuideline(true).transitionDuration(350).showLegend(true).showYAxis(true).showXAxis(true)
   nv.addGraph ->
-    chart.xAxis.axisLabel('Game').tickFormat d3.format('d')
+    chart.xAxis.axisLabel('Game').tickFormat d3.format('s')
     chart.yAxis.axisLabel('Points').tickFormat d3.format('d')
 
 
