@@ -9,6 +9,15 @@ Template["gameShow"].helpers
   printThis: ->
     console.log "Print this"
     console.log @
+  playerNames: ->
+    playerNames = @game.playerNames
+    console.log playerNames
+    counter = 1;
+    return playerNames.map ( name ) ->
+        return {
+            name: name
+            counter: counter++
+          }
   getPoints:->
     data = {}
     data._id = @game.groupId

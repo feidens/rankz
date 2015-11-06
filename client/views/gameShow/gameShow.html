@@ -25,10 +25,10 @@
       </div>
     {{else}}
       <form class="ui form">
-        {{#each this.game.playerNames}}
+        {{#each playerNames}}
           <div class="field">
-            <label>{{ this }}</label>
-            <input id="{{ this }}" name="{{ this }}" type="number" placeholder="{{i18n 'game.points'}}">
+            <label>{{ name }}</label>
+            <input id="{{ name }}" name="{{ name }}" type="number" placeholder="{{i18n 'game.points'}}" value="{{counter}}">
           </div>
         {{/each}}
 
