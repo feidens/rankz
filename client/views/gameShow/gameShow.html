@@ -3,10 +3,9 @@
 
     {{#if this.gamePoints}}
       {{printThis}}
-      {{getPoints}}
       <div class="ui raised segment">
       {{#each this.gamePoints}}
-
+        {{#if hasPlayed }}
             <div class="ui green ribbon label">{{playerName}}</div>
             <p>
               <div class="ui black header">
@@ -20,7 +19,7 @@
               </div>
 
             </p>
-
+        {{/if}}
       {{/each}}
       </div>
     {{else}}

@@ -18,33 +18,33 @@ Template["gamesAdd"].events
     $("input[value='Submit']").transition('pulse')
 
   "click input[type='checkbox']": (e) ->
-    console.log "Before Check"
-    console.log playerNames
+    # console.log "Before Check"
+    # console.log playerNames
 
     playerNames.push(e.target.value) if e.target.checked
     playerNames = _.without(playerNames, e.target.value) unless e.target.checked
 
     playerNames = _.uniq(playerNames);
 
-    console.log "After check"
-    console.log playerNames
+    # console.log "After check"
+    # console.log playerNames
 
 
   "change input[id='groupName']": () ->
 
 
     groupname = $("input[id='groupName']").val()
-    console.log groupname
+    # console.log groupname
     group = Groups.findOne( groupname:
       groupname
     )
-    console.log group
-    console.log group.playerNames if group
+    # console.log group
+    # console.log group.playerNames if group
 
 
     @player = group.playerNames if group
     @player = [] unless group
-    console.log @player
+    # console.log @player
     playerDep.changed()
     return
 
@@ -54,17 +54,17 @@ Template["gamesAdd"].events
 
 
     groupname = $("input[id='groupName']").val()
-    console.log groupname
+    # console.log groupname
     group = Groups.findOne( groupname:
       groupname
     )
-    console.log group
-    console.log group.playerNames if group
+    # console.log group
+    # console.log group.playerNames if group
 
 
     @player = group.playerNames if group
     @player = [] unless group
-    console.log @player
+    # console.log @player
     playerDep.changed()
     return
 
@@ -88,17 +88,17 @@ Template["gamesAdd"].events
     data = SimpleForm.processForm(e.target)
 
     data.playerNames = playerNames
-    console.log 'DATA'
-    console.log data
+    # console.log 'DATA'
+    # console.log data
 
 
     data.date =  data.range
-    console.log 'DATA'
+    # console.log 'DATA'
     data.date = new Date(data.daterange)
     # data.date = template.picker.getMoment().toDate()
 
-    console.log "Submit game add data"
-    console.log data
+    # console.log "Submit game add data"
+    # console.log data
     if data.playerNames.length > 1
       Meteor.call('createGame', data, (error, id) ->
           if error
@@ -121,7 +121,7 @@ Template["gamesAdd"].events
 
 Template["gamesAdd"].rendered = ->
   $(document).ready ->
-    console.log 'ready'
+    # console.log 'ready'
     $('input[name="daterange"]').daterangepicker {
       format: 'YYYY-MM-DDTHH:MM:SS'
       startDate: moment(new Date())
@@ -134,15 +134,15 @@ Template["gamesAdd"].rendered = ->
 
   player = []
   playerNames = []
-  console.log @
+  # console.log @
   # @picker = new Pikaday(
   #   field: document.getElementById('datepicker')
   #   format: 'dddd, DD.MM.YYYY'
   #   defaultDate: moment(new Date()).format('dddd, DD.MM.YYYY')
   #   setDefaultDate: true
   #   onSelect: ->
-  #     console.log this
-  #     console.log this.getMoment().format('dddd, DD.MM.YYYY')
+  #     # console.log this
+  #     # console.log this.getMoment().format('dddd, DD.MM.YYYY')
   #     return
   # )
-  console.log @
+  # console.log @

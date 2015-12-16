@@ -8,8 +8,6 @@
 
 Meteor.methods
   getUserName: (data) ->
-    console.log "SERVER SIDE"
-    console.log Meteor.users
     name = Meteor.users.findOne( _id: data.playerId, {reactive: false} ).username
     elem =
       username: name

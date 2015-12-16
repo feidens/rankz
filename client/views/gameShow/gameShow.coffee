@@ -2,35 +2,37 @@ Template["gameShow"].helpers
   ownDoc: ->
     @userId is Meteor.userId()
   print: ->
-    console.log "Game print"
-    console.log @game
-    console.log "GamePoints print"
-    console.log @gamePoints
+    # console.log "Game print"
+    # console.log @game
+    # console.log "GamePoints print"
+    # console.log @gamePoints
   printThis: ->
-    console.log "Print this"
-    console.log @
+    # console.log "Print this"
+    # console.log @
   playerNames: ->
     playerNames = @game.playerNames
-    console.log playerNames
+    # console.log playerNames
     counter = 1;
     return playerNames.map ( name ) ->
         return {
             name: name
             counter: counter++
           }
+  hasPlayed:->
+    @rank>=0 || @points!=0
   getPoints:->
     data = {}
     data._id = @game.groupId
-    console.log 'GET POINTS IN SHOW'
+    # console.log 'GET POINTS IN SHOW'
     Meteor.call('getGamePoints', data, (error, id) ->
         if error
           # display the error to the user
-          #Errors.throw(error.reason);
+          # Errors.throw(error.reason);
           if (error.error == 302)
             console.log("error")
            #Router.go('postPage', {_id: error.details});
         else
-          console.log(id)
+           console.log(id)
       )
 
 
@@ -57,7 +59,7 @@ Template["gameShow"].events
 
     data = SimpleForm.processForm(e.target)
 
-    console.log "Submit Show game"
+    # console.log "Submit Show game"
 
 
     data.playerNames = @game.playerNames
@@ -68,7 +70,7 @@ Template["gameShow"].events
     data.date = @game.createdAt
 
 
-    console.log data
+    # console.log data
 
     Meteor.call('updateGamePoints', data, (error, id) ->
         if error
@@ -78,7 +80,7 @@ Template["gameShow"].events
             console.log("error")
            #Router.go('postPage', {_id: error.details});
         else
-          console.log id
+            console.log id
       )
 
     $("input[id='submitAddGroup']").transition('slide down')
