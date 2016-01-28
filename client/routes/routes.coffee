@@ -47,7 +47,7 @@ GamesController = RouteController.extend
     ]
 
   games: ->
-     Games.find {}, {sort: {createdAt: -1, _id: -1}}
+    Games.find( {}, {sort: {createdAt: -1, _id: -1}}, {limit: 10})
   data: ->
     games: @games()
 
@@ -66,7 +66,7 @@ GameShowController = RouteController.extend
     waitOn: ->
       [
         Meteor.subscribe "gamepoints", @params._id
-        Meteor.subscribe "playerGames"
+        Meteor.subscribe "games", @params._id
       ]
     game: ->
       gameId = this.params._id
@@ -75,7 +75,7 @@ GameShowController = RouteController.extend
 
     gPoints: ->
       gid = this.params._id
-      query = Gamepoints.find {},
+      query = Gamepoints.find { },
         sort:
           rank: +1
 
@@ -189,6 +189,7 @@ RankShowController  = RouteController.extend
       [
         Meteor.subscribe "groupPointsById", @params._id
         Meteor.subscribe "playerGroups"
+        Meteor.subscribe "gamepointsByGroup", @params._id
         Meteor.subscribe "groupPlayerGames", @params._id
       ]
     group: ->

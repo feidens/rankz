@@ -9,11 +9,18 @@
     {{#each gamesWithRank}}
 
       <div class="ui padding-wrapper feed segment">
+        {{#if isAdmin}}
+        <a id='trash' class="ui bottom right attached label">
+            <i class="trash icon"></i>
+        </a>
+        {{/if}}
         <div class="event">
+
           <div class="label">
             <i class="circular inverted {{getStatusIconClass}} icon"></i>
           </div>
           <div class="content">
+
             <div class="date">
 
               {{#if isAFit}}
@@ -38,6 +45,7 @@
                     </div>
 
                   </div>
+
                 </a>
 
               {{/if}}
@@ -47,11 +55,15 @@
               {{i18n 'games.summaryLabel'}}{{type}}
             </div>
             <div class="extra text">
+              {{i18n 'game.group'}} {{getGroup}}
+            </div>
+            <div class="extra text">
               {{playerNames}}
             </div>
             <div class="extra text">
               {{date}}
             </div>
+
           </div>
         </div>
       </div>

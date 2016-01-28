@@ -1,18 +1,31 @@
-// function loadUser(user) {
-//     var userAlreadyExists = typeof Meteor.users.findOne({ username : user.username }) === 'object';
-//
-//     if (!userAlreadyExists) {
-//         Accounts.createUser(user);
-//     }
-// }
-//
-// Meteor.startup(function () {
-//     var users = YAML.eval(Assets.getText('users.yml'));
-//
-//     for (key in users) if (users.hasOwnProperty(key)) {
-//         loadUser(users[key]);
-//     }
-// });
+function loadUser(user) {
+    var userAlreadyExists = typeof Meteor.users.findOne({ username : user.username }) === 'object';
+
+    if (!userAlreadyExists) {
+        Accounts.createUser(user);
+    }
+}
+
+Meteor.startup(function () {
+    //var users = YAML.eval(Assets.getText('users.yml'));
+    users = []
+    user = {}
+    user.username = 'feidens'
+    user.password = 'Source000'
+    users[0] = user
+    user = {}
+    user.username = 'snake'
+    user.password = 'Source000'
+    users[1] = user
+    user = {}
+    user.username = 'blub'
+    user.password = 'Source000'
+    users[2] = user
+
+    for (key in users){
+        loadUser(users[key]);
+    };
+});
 
 
 // snake

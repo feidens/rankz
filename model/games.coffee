@@ -58,7 +58,7 @@ Meteor.methods
     console.log(gameAttr)
     # pick out the whitelisted keys
     console.log gameAttr.date
-    date = new Date(gameAttr.date.toString())
+    date = new Date(gameAttr.date)
     date = new Date() unless date
 
     console.log date

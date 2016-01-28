@@ -6,17 +6,9 @@ Template["rankShow"].helpers
     @userId is Meteor.userId()
   print: ->
 
-    a = Games.find
-      playerIds:
-        $in: [
-          Meteor.userId()
-          ]
-      ,
-        sort:
-          createdAt: -1
-          _id: -1
 
-    console.log a.count()
+    console.log 'PRINT IN RANK'
+    console.log @
 
     return
 
@@ -42,6 +34,7 @@ Template["rankShow"].helpers
                 sort:
                   createdAt: -1
                   _id: -1
+                reactive: false
 
 
             players.push( {username: elem.username, value: elem.value, gamesPlayed: gamesPlayed.count()} )
@@ -65,3 +58,49 @@ Template["rankShow"].events
 
 Template.rankShow.rendered = ->
   players = []
+
+  grpPoints = GroupPoints.find( { groupId:   @data.group._id }, {fields:{playerName:1} } ).fetch()
+  console.log 'GRP POINTS'
+  console.log grpPoints
+  pointList = []
+  for player in grpPoints
+    gamepoints = Gamepoints.find( { groupId: @data.group._id, playerName: player.playerName  } , {sort: {createdAt: 1}, reactive: false } ).fetch()
+    console.log 'G Points'
+
+    console.log gamepoints
+
+    console.log 'G Points End'
+    y = 1000
+    x = 0
+    Y = []
+    Y.push {x : x , y : y}
+
+
+    for gamepointEntry in gamepoints
+      console.log gamepointEntry
+      y = y + gamepointEntry.points
+      console.log 'date'
+      console.log moment(gamepointEntry.createdAt).format('DD.MM.YYYY')
+      x = x + 1
+      Y.push {x : x , y : y}
+
+    console.log Y
+    pointList.push {values: Y, key: player.playerName}
+
+  console.log 'Point List'
+  console.log pointList
+
+  chart = nv.models.lineChart().margin(left: 100).useInteractiveGuideline(true).transitionDuration(350).showLegend(true).showYAxis(true).showXAxis(true)
+  nv.addGraph ->
+    chart.xAxis.axisLabel('Game').tickFormat d3.format('s')
+    chart.yAxis.axisLabel('Points').tickFormat d3.format('d')
+
+
+
+
+
+    d3.select('#chart svg').datum( pointList ).call chart
+    nv.utils.windowResize ->
+      chart.update()
+      return
+    chart

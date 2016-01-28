@@ -61,7 +61,6 @@ if Meteor.isServer
 
 
 
-
 AccountsTemplates.removeField "email"
 AccountsTemplates.addFields [
   {
